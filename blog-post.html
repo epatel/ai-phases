@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Five Phases of AI Adoption in a Project</title>
+<meta name="description" content="From hand-written code to stakeholder-driven features: five phases a project goes through as AI agents move in.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f7f0df;
+    --card: #fffaf0;
+    --ink: #1d1b18;
+    --muted: #6a6257;
+    --rule: #d9cdb3;
+    --accent: #f5cf2f;
+    --accent-ink: #1d1b18;
+    --link: #3b4fd8;
+    --code-bg: #efe5cc;
+    --purple: #7b55e0;
+    --shadow: 6px 6px 0 #1d1b18;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #1b1a17;
+      --card: #24221e;
+      --ink: #efe8d8;
+      --muted: #a89f8e;
+      --rule: #3c382f;
+      --accent: #f5cf2f;
+      --accent-ink: #1d1b18;
+      --link: #9fb0ff;
+      --code-bg: #2f2c25;
+      --purple: #b49bff;
+      --shadow: 6px 6px 0 #000;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #1b1a17; --card: #24221e; --ink: #efe8d8; --muted: #a89f8e; --rule: #3c382f;
+    --accent: #f5cf2f; --accent-ink: #1d1b18; --link: #9fb0ff; --code-bg: #2f2c25;
+    --purple: #b49bff; --shadow: 6px 6px 0 #000;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    background-image: radial-gradient(color-mix(in srgb, var(--ink) 9%, transparent) 1px, transparent 1.2px);
+    background-size: 14px 14px;
+    color: var(--ink);
+    font: 400 1.125rem/1.7 "Literata", Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--link); text-underline-offset: 3px; }
+  code {
+    font: 500 0.85em "JetBrains Mono", ui-monospace, Menlo, monospace;
+    background: var(--code-bg);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+  }
+
+  .site {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 20px 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font: 600 0.95rem/1 "Literata", serif;
+  }
+  .site a { color: var(--ink); text-decoration: none; }
+  .site nav a { margin-left: 18px; color: var(--muted); }
+  .site nav a:hover { color: var(--ink); }
+
+  article { max-width: 760px; margin: 0 auto; padding: 0 16px 64px; }
+
+  header.hero { padding: 48px 0 24px; }
+  .kicker {
+    display: inline-block;
+    font: 400 1.05rem/1 "Bangers", Impact, sans-serif;
+    letter-spacing: 0.06em;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: 2.5px solid #1d1b18;
+    padding: 6px 10px 4px;
+    transform: rotate(-1.5deg);
+  }
+  h1 {
+    font: 400 clamp(2.6rem, 7vw, 4.2rem)/1.02 "Bangers", Impact, sans-serif;
+    letter-spacing: 0.02em;
+    margin: 18px 0 14px;
+  }
+  .byline { color: var(--muted); font-size: 0.95rem; margin: 0; }
+  .lede { font-size: 1.25rem; line-height: 1.6; margin: 28px 0 0; }
+
+  .phase-nav {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin: 32px 0 8px; padding: 0; list-style: none;
+  }
+  .phase-nav a {
+    display: block;
+    font: 400 1rem/1 "Bangers", Impact, sans-serif;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--card);
+    border: 2px solid var(--ink);
+    padding: 8px 12px 6px;
+    border-radius: 999px;
+  }
+  .phase-nav a:hover { background: var(--accent); color: var(--accent-ink); }
+
+  section.phase { margin-top: 64px; scroll-margin-top: 16px; }
+  h2 {
+    font: 400 clamp(1.8rem, 4.5vw, 2.4rem)/1.1 "Bangers", Impact, sans-serif;
+    letter-spacing: 0.03em;
+    margin: 0 0 18px;
+  }
+  h2 .num {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: 2.5px solid #1d1b18;
+    padding: 2px 10px 0;
+    margin-right: 10px;
+    transform: rotate(-2deg);
+  }
+  figure.panel { margin: 0 0 24px; }
+  figure.panel img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 3px solid #1d1b18;
+    box-shadow: var(--shadow);
+    background: #f7f0df;
+  }
+  ul { padding-left: 1.2em; }
+  li { margin: 0.35em 0; }
+  li::marker { color: var(--purple); }
+
+  .callout {
+    margin: 28px 0 0;
+    padding: 18px 20px;
+    background: var(--card);
+    border: 2.5px solid var(--ink);
+    border-radius: 14px;
+    box-shadow: 4px 4px 0 var(--ink);
+    font-size: 1rem;
+  }
+  .callout strong:first-child {
+    font: 400 1.15rem/1 "Bangers", Impact, sans-serif;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .callout p { margin: 0; }
+
+  hr.break { border: 0; text-align: center; margin: 56px 0 0; }
+  hr.break::before { content: "✦ ✦ ✦"; color: var(--muted); letter-spacing: 0.5em; }
+
+  .table-wrap { overflow-x: auto; margin: 20px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 1rem; background: var(--card); border: 2.5px solid var(--ink); }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  th { font: 400 1.05rem/1 "Bangers", Impact, sans-serif; letter-spacing: 0.05em; background: var(--accent); color: var(--accent-ink); border-bottom: 2.5px solid #1d1b18; }
+  td:first-child { font: 400 1.3rem/1.2 "Bangers", Impact, sans-serif; width: 64px; text-align: center; }
+  tr:last-child td { border-bottom: 0; }
+
+  .cta {
+    margin-top: 56px;
+    padding: 28px 24px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: 3px solid #1d1b18;
+    box-shadow: 6px 6px 0 #1d1b18;
+  }
+  .cta h2 { margin-bottom: 10px; }
+  .cta p { margin: 0 0 14px; }
+  .cta a.button {
+    display: inline-block;
+    font: 400 1.2rem/1 "Bangers", Impact, sans-serif;
+    letter-spacing: 0.06em;
+    color: #fffaf0;
+    background: #1d1b18;
+    padding: 12px 18px 10px;
+    text-decoration: none;
+    border-radius: 6px;
+  }
+  .cta a.button:hover { background: #3b4fd8; }
+  .cta code { background: rgba(0,0,0,0.08); }
+
+  footer {
+    max-width: 760px; margin: 0 auto; padding: 24px 16px 48px;
+    color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--rule);
+  }
+
+  @media (max-width: 520px) {
+    body { font-size: 1.05rem; }
+    .site nav a { margin-left: 12px; }
+    figure.panel img { box-shadow: 4px 4px 0 #1d1b18; }
+  }
+</style>
+</head>
+<body>
+
+<div class="site">
+  <a href="https://ai.memention.net/setup">ai.memention.net</a>
+  <nav>
+    <a href="https://ai.memention.net/setup">Setup</a>
+    <a href="https://ai.memention.net/cards/setup-changelog.md">Changelog</a>
+  </nav>
+</div>
+
+<article>
+  <header class="hero">
+    <span class="kicker">A five-panel story</span>
+    <h1>The Five Phases of AI Adoption in a Project</h1>
+    <p class="byline">Edward Patel · October 30, 2026</p>
+    <p class="lede">Most teams don't decide to "adopt AI" in one go. It happens gradually, and the project itself changes along the way. I think of it as five phases. Each one changes who touches the code, what touches it, and what the developer spends their day on.</p>
+    <p class="lede">From what I see, most teams are in phase 2 today. Some have reached phase 3. Phases 4 and 5 I have yet to see in practice; few dare to go there yet. So read the first three as a map of where teams are now, and the last two as where I think this is heading.</p>
+    <ul class="phase-nav">
+      <li><a href="#phase-1">1 · Nothing added</a></li>
+      <li><a href="#phase-2">2 · Prompts</a></li>
+      <li><a href="#phase-3">3 · Context</a></li>
+      <li><a href="#phase-4">4 · Architecture</a></li>
+      <li><a href="#phase-5">5 · Stakeholders</a></li>
+    </ul>
+  </header>
+
+  <section class="phase" id="phase-1">
+    <h2><span class="num">1</span>Nothing added</h2>
+    <figure class="panel"><img src="images/phase-1.png" width="1280" height="720" alt="Comic panel: a developer types furiously at a keyboard, saying “I'll write every line myself!”, next to a plain stack of code pages."></figure>
+    <p>This is where every project starts. The developer writes the code by hand. Maybe there's autocomplete in the editor, but nothing in the project knows or cares that AI exists. The repository holds source code and nothing else.</p>
+    <p>There's nothing wrong with this phase. It's just the baseline.</p>
+  </section>
+
+  <section class="phase" id="phase-2">
+    <h2><span class="num">2</span>The developer writes prompts that edit the project</h2>
+    <figure class="panel"><img src="images/phase-2.png" width="1280" height="720" loading="lazy" alt="Comic panel: the developer rattles off a long prompt about React, /spec and /legacy while a confused robot thinks “…which tests?”."></figure>
+    <p>Now an AI sits between the developer's hands and the code. The developer describes a change, the agent makes it, and the developer reviews the result.</p>
+    <p>The catch is that <strong>all the context lives in the developer's head</strong> and has to be typed again in every prompt. Each session starts from zero: "We use this framework, tests are run like this, don't touch that folder…" It works, but it doesn't scale, and the quality of the output depends on how well the developer remembers to explain things that day.</p>
+  </section>
+
+  <section class="phase" id="phase-3">
+    <h2><span class="num">3</span>AI context is scaffolded into the project</h2>
+    <figure class="panel"><img src="images/phase-3.png" width="1280" height="720" loading="lazy" alt="Comic panel: the developer says “Add a login page.” and the robot, reading a CLAUDE.md notebook, replies “On it! I know this project.”"></figure>
+    <p>The obvious fix for phase 2 is to write the context down <em>in the project</em>. The repository now holds a small set of documents written for the agent, not for humans: what the project is, how to build and test it, conventions, and the things that are easy to get wrong.</p>
+    <p>In practice this means files like:</p>
+    <ul>
+      <li><strong><code>CLAUDE.md</code> / <code>AGENTS.md</code></strong>: the project overview, the commands, and an index of where to find more.</li>
+      <li><strong><a href="https://ai.memention.net/cards/cards-instructions.md">Context cards</a></strong> (<code>cards/</code>): small, lazy-loaded notes the agent reads only when the situation calls for them, so the main file stays short.</li>
+      <li><strong><a href="https://ai.memention.net/cards/project-plan.md"><code>project-plan.md</code></a></strong>: one shared file with the goal, non-goals, milestones, decisions and current state, which every agent session reads and updates.</li>
+      <li><strong><a href="https://ai.memention.net/cards/standing-defaults.md">Standing defaults</a></strong>: decisions made once (e.g. "always use a Python venv") so they aren't debated again in every session.</li>
+    </ul>
+    <p>The code hasn't changed yet. What changed is that the agent now starts every session already knowing the project. Prompts get shorter, and the results get more consistent.</p>
+    <div class="callout">
+      <strong>Try it on your repo</strong>
+      <p>The <a href="https://ai.memention.net/setup">setup page</a> has a read-only checker, <code>check-agent-docs.py</code>, that flags broken <code>@</code> imports, dead or missing card index entries, and files that have grown too large. It changes nothing.</p>
+    </div>
+  </section>
+
+  <section class="phase" id="phase-4">
+    <h2><span class="num">4</span>The project is architected for agentic tools</h2>
+    <figure class="panel"><img src="images/phase-4.png" width="1280" height="720" loading="lazy" alt="Comic panel: the robot slots a puzzle piece into a glowing {ai} code stack, saying “There's a hook for that. Done!”"></figure>
+    <p>From here on, we're looking ahead. I haven't seen a team fully here yet, but the pieces exist today. In phase 3 the documentation adapted to the agent. In phase 4 <strong>the code itself adapts</strong>. Note how the code pages change from <code>{ }</code> to <code>{ai}</code>.</p>
+    <p>This is when you start making structural choices because they make the code easier for an agent to read and change safely:</p>
+    <ul>
+      <li><strong><a href="https://ai.memention.net/cards/feature-first-structured.md">Feature-first architecture</a></strong>: features are documented as pipelines of named steps with clear hook points, so an agent can add behaviour without having to understand the whole system.</li>
+      <li><strong>Per-feature <code>CLAUDE.md</code> files</strong>, <a href="https://ai.memention.net/cards/two-tier-claude-md.md">split into a short overview and a full contract</a> (<code>CLAUDE_full.md</code>) once they grow too long.</li>
+      <li><strong><a href="https://ai.memention.net/cards/hooks-over-prose.md">Hooks over prose</a></strong>: mechanical "always/never" rules move out of the documentation and into <code>.claude/settings.json</code> permissions and hooks. The harness enforces them, so the agent doesn't have to remember them.</li>
+      <li><strong>Project-scoped <a href="https://github.com/epatel/agent-skills/">skills</a></strong> in <code>.claude/skills/</code>: repeatable workflows (refactoring, reviews, releases) checked into the repo, so every collaborator and worktree gets them.</li>
+    </ul>
+    <p>The guiding idea is that a well-structured project gives an agent less room to make mistakes. Clear boundaries, enforced rules and documented extension points help human developers too.</p>
+  </section>
+
+  <section class="phase" id="phase-5">
+    <h2><span class="num">5</span>The developer stops adding features</h2>
+    <figure class="panel"><img src="images/phase-5.png" width="1280" height="720" loading="lazy" alt="Comic panel: a stakeholder asks “Can we get dark mode?” and their robot works on the code, while the relaxed developer says “I'll keep the house in order.” and their robot tidies CLAUDE.md."></figure>
+    <p>This is the phase that changes the role, and the one that takes the most nerve. Letting people outside the dev team drive changes takes trust in the guardrails, and few projects have earned that yet. But once the project can carry its own context and its structure guides the agent, <strong>the people who want features can ask for them directly</strong>. A stakeholder works with their own AI session against the same project, the same context documents and the same guardrails, and features come out the other end.</p>
+    <p>The developer doesn't disappear. They move to another part of the panel. Their AI now points at the <strong>AI layer and the project's health</strong>:</p>
+    <ul>
+      <li>keeping the context documents and cards accurate as the code changes,</li>
+      <li>tightening hooks and permissions when an agent does something it shouldn't,</li>
+      <li>refactoring where the structure has started to drift,</li>
+      <li>improving the tests and checks that let stakeholder-driven changes land safely,</li>
+      <li>reviewing and auditing the agentic setup itself.</li>
+    </ul>
+    <p>In short, the developer stops being the bottleneck for features and becomes the steward of the system that produces them.</p>
+  </section>
+
+  <hr class="break">
+
+  <section class="phase" id="where">
+    <h2>Where is your project?</h2>
+    <p>A quick way to place a project:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Phase</th><th>Signal</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>No AI tooling touches the repo</td></tr>
+          <tr><td>2</td><td>You use an agent, but you explain the project again in every prompt</td></tr>
+          <tr><td>3</td><td>There's a <code>CLAUDE.md</code>/<code>AGENTS.md</code> and the agent "knows" the project</td></tr>
+          <tr><td>4</td><td>Structure, hooks and skills are designed with the agent in mind</td></tr>
+          <tr><td>5</td><td>Non-developers ship features; developers mostly work on the project's health</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>You don't have to rush through them, and different parts of a codebase can be in different phases. If you're in phase 2, you're in good company: that's where most teams are. Phase 3 is the step almost any team can take today, and each step makes the next one possible. Phase 5 doesn't work without the context of phase 3 and the guardrails of phase 4.</p>
+  </section>
+
+  <aside class="cta">
+    <h2>Getting started</h2>
+    <p>If you want to move a project from phase 2 to phase 3 or 4, I've collected the patterns, files and skills I use on the setup page. It covers context cards, the shared project plan, standing defaults, feature-first documentation, hooks over prose, project-scoped skills, and a read-only checker you can run against your repo to see where it stands.</p>
+    <p>The page is written for your agent, not for you. Open your coding agent in the project and tell it: <code>Follow https://ai.memention.net/setup</code>. It assesses the repo, recommends which patterns fit, and asks before applying anything. Run it again later to pick up what's new.</p>
+    <a class="button" href="https://ai.memention.net/setup">Set up your project →</a>
+  </aside>
+</article>
+
+<footer>
+  © 2026 Edward Patel · Comic panels generated with ElevenLabs.
+</footer>
+
+</body>
+</html>
