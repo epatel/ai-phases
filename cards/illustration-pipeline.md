@@ -33,8 +33,7 @@ For a small change (a label, one added chip), upload the current `images/concept
 
 ## Fixed IDs
 
-- Flow: (ID kept out of the repo)
-- Style reference: node (ID kept out of the repo) — the concept-2 phase 2 illustration.
+- The ElevenLabs flow ID and the style-reference node ID (the concept-2 phase 2 illustration) are in `.claude/local-ids.md`, which is git-ignored. The repo is public: never commit ElevenLabs IDs, flow URLs, signed `content_url`s or login links. If the local file is missing, find the flow with `creative_list_flows` or upload `images/concept-2/phase-2.png` as a new style reference.
 - Characters: developer with spiky brown hair, round glasses, dusty-blue hoodie; stakeholder with neat black hair, pink shirt, mustard tie; AI is a small lavender robot with an antenna.
 
 ## Cost
