@@ -42,7 +42,7 @@ make jpg        # make the published JPGs from the PNG masters
 make site       # assemble the GitHub Pages site in _site/
 ```
 
-`make previews`, `make refs` and `make screenshot` need `rsvg-convert`, ImageMagick and Google Chrome. Every push to `main` deploys the page via `.github/workflows/pages.yml`.
+`make previews`, `make refs` and `make screenshot` need `rsvg-convert`, ImageMagick and Google Chrome. The page is deployed by `.github/workflows/pages.yml`; `make deploy` starts it on `main`.
 
 ## How the illustrations were made
 

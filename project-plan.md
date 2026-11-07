@@ -76,7 +76,7 @@ Publish the post (GitHub Pages) with text and illustrations that agree, so a rea
 
 ## Current state / handoff
 
-M6, M6b, M6c and M7 are done: all three review rounds are applied (R21 optional, open) in `blog-post.md`, the HTML is generated from it, and `make check` passes. The post is live at https://epatel.github.io/ai-phases/; pushing to `main` redeploys it. M8 done: the page now loads ~560 KB of JPGs instead of ~7.6 MB of PNGs. Next: optional R21.
+M6, M6b, M6c and M7 are done: all three review rounds are applied (R21 optional, open) in `blog-post.md`, the HTML is generated from it, and `make check` passes. The post is live at https://epatel.github.io/ai-phases/; after pushing to `main`, run `make deploy` (push events haven't triggered the workflow). M8 done: the page now loads ~560 KB of JPGs instead of ~7.6 MB of PNGs. Next: optional R21.
 
 ## Open questions
 

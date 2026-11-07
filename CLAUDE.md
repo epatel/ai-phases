@@ -11,7 +11,8 @@ Always read @project-plan.md before starting — it holds the goal, the open rev
 - `make` — list targets
 - `make html` — build `blog-post.html` from `blog-post.md` and `scripts/template.html`
 - `make jpg` — make the published JPGs from the PNG masters in `images/concept-2/` (run after replacing an illustration)
-- `make site` — assemble the GitHub Pages site in `_site/` (`index.html` + the five JPGs); CI runs this on every push to `main`
+- `make site` — assemble the GitHub Pages site in `_site/` (`index.html` + the five JPGs); the Pages workflow runs it
+- `make deploy` — start the GitHub Pages workflow on `main` after pushing (pushes to `main` have not been triggering it)
 - `make diagrams` — regenerate the SVG diagrams from `images/concept-2/diagrams/make_concept.py`
 - `make previews` — render the diagrams to `build/previews/` to look at them
 - `make refs` — render the diagrams at 1.6× to `build/refs/` for upload to ElevenLabs

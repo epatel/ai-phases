@@ -5,12 +5,13 @@ SITE     := _site
 CHROME   ?= /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
 CHECKER  ?= ../ai-setup/site/cards/check-agent-docs.py
 
-.PHONY: help html jpg site diagrams previews refs check screenshot open clean
+.PHONY: help html jpg site deploy diagrams previews refs check screenshot open clean
 
 help:
 	@echo "make html        build blog-post.html from blog-post.md (never edit the HTML by hand)"
 	@echo "make jpg         make the published JPGs (quality 82) from the PNG masters in images/concept-2/"
 	@echo "make site        assemble the GitHub Pages site in $(SITE)/ (index.html + illustrations)"
+	@echo "make deploy      run the GitHub Pages workflow on main (push first)"
 	@echo "make diagrams    regenerate the SVG diagrams from make_concept.py"
 	@echo "make previews    render the diagrams to $(BUILD)/previews/"
 	@echo "make refs        render the diagrams at 1.6x to $(BUILD)/refs/ for ElevenLabs"
@@ -35,6 +36,11 @@ site: html
 	cp blog-post.html $(SITE)/index.html
 	cp images/concept-2/phase-[1-5].jpg $(SITE)/images/concept-2/
 	touch $(SITE)/.nojekyll
+
+# Pushes to main haven't been triggering the workflow, so start it by hand.
+deploy:
+	gh workflow run pages.yml -R epatel/ai-phases --ref main
+	@echo "started; follow with: gh run watch -R epatel/ai-phases"
 
 diagrams:
 	python3 $(DIAGRAMS)/make_concept.py $(DIAGRAMS)

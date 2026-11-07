@@ -39,6 +39,6 @@ flowchart LR
 
 ## Git
 
-- `main` is what's published (https://epatel.github.io/ai-phases/); every push to it redeploys. Work can happen on `blog-post` and be fast-forwarded into `main`.
+- `main` is what's published (https://epatel.github.io/ai-phases/); the Pages workflow deploys it, but pushes to `main` have not been triggering it, so run `make deploy` after pushing (`gh workflow run pages.yml`). Cause unknown: the workflow is active, Pages uses build type `workflow`, and `main` is an allowed deployment branch. Work can happen on `blog-post` and be fast-forwarded into `main`.
 - Remote: `github.com/epatel/ai-phases` (public). Anything committed is public, so keep secrets and signed ElevenLabs URLs out of the repo.
 - Tags `style-1` and `concept-1` both point at the commit with the comic (concept 1) version of the post.
