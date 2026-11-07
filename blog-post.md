@@ -52,9 +52,9 @@ In my own projects that means files like these (one way to do it):
 
 The names are Claude Code's; other agents use `AGENTS.md` and similar files.
 
-Tests belong in this phase too. Unit and function tests, with the commands to run them written in the context docs, let the agent check that its change works before you look at it. Context tells the agent what to do; tests tell it whether it did.
-
 The application code itself hasn't changed yet. What changed is that the agent now starts every session already knowing the project. Prompts get shorter, and the results get more consistent.
+
+Tests belong in this phase too, whether they're new or already there. Once the commands to run the unit and function tests are in the context docs, the agent checks that its change works before you look at it. Context tells the agent what to do; tests tell it whether it did.
 
 This matters even more once you run more than one agent. If you orchestrate several agents in parallel, each in its own git worktree, none of them can borrow the context from your head. What's written in the repository comes along with every checkout, so each agent starts from the same conventions, commands and plan, and the decisions one agent records reach the others when its branch is merged. In phase 2, every extra agent means another long prompt; in phase 3, it's a short one.
 
@@ -64,7 +64,7 @@ This matters even more once you run more than one agent. If you orchestrate seve
 
 ## Phase 4: Architecture chosen for AI
 
-![The developer works through a board of architecture decisions, crossing out options like “one big shared module” in favour of “small features with clear hooks”, “rules enforced by hooks”, “explicit contract per feature” and, instead of “no quality measurement”, “code quality measured”. The resulting repository has features with open hook slots, contracts, fast tests and quality checks, and sits inside enforced rules; the AI plugs a new step into one slot.](images/concept-2/phase-4.png)
+![The developer works through a board of architecture decisions, crossing out options like “one big shared module” in favour of “small features with clear hooks”, “rules enforced by hooks”, “explicit contract per feature” and “code quality measured” (replacing “no quality measurement”). The resulting repository has features with open hook slots, contracts, fast tests and quality checks, and sits inside enforced rules; the AI plugs a new step into one slot.](images/concept-2/phase-4.png)
 
 From here on I'm looking ahead, so read this as suggestions rather than a report; the pieces exist today. In phase 3 the documentation adapted to the agent. In phase 4 I'd expect **the developer to start choosing the architecture for it**. Most of these choices are good for human developers too; the difference is that how an AI works becomes the tie-breaker whenever there's a design decision to make.
 
@@ -83,7 +83,7 @@ My bet is that a well-structured project gives an agent less room to make mistak
 
 ![The repository is fenced in on every side. The stakeholder asks “Dark mode, please.” and their AI's change must pass a checks gate (tests, hooks, review) before it reaches the features layer. The developer's AI does upkeep on the foundation of context, guardrails, tests and skills that keeps it safe.](images/concept-2/phase-5.png)
 
-This is the phase where the developer would stop adding features, and the one that takes the most nerve. It's the furthest out, so this is my guess at what it takes: it only works once the project is **fully set up and safe**, and you've seen that setup hold: the context is complete, the rules are enforced by hooks and permissions, and every change passes the tests and quality checks from the earlier phases on its way in. If a project is guarded that well, **the people who want features could drive them directly**. A stakeholder would work with their own AI session against the same project, inside the same guardrails, and features would come out the other end.
+This is the phase where the developer would stop adding features, and the one that takes the most nerve. It's the furthest out, so this is my guess at what it takes. It only works once the project is **fully set up and safe**, and you've seen that setup hold: the context is complete, the rules are enforced by hooks and permissions, and every change passes the tests and quality checks from the earlier phases on its way in. If a project is guarded that well, **the people who want features could drive them directly**. A stakeholder would work with their own AI session against the same project, inside the same guardrails, and features would come out the other end.
 
 Review is the part I'd expect to have to scale. If the developer read every stakeholder change, they would simply become the bottleneck again, one pull request at a time. What I'd try is a second AI that reviews each change against the project's rules, alongside the tests and hooks, with a human stepping in only when the reviewer or a check flags something.
 

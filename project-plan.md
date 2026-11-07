@@ -21,6 +21,7 @@ Publish the post on the author's blog with text and illustrations that agree, so
 - [x] M6 — Apply the review (items below)
 - [x] M7 — Single source: `blog-post.html` is generated from `blog-post.md` (`make html`, `scripts/build_html.py`)
 - [x] M6b — Apply the round-2 review (items below)
+- [x] M6c — Apply the round-3 review (items below)
 - [ ] M8 — Optimise images (WebP, ~200 KB each instead of ~1.5 MB)
 - [ ] M9 — Final proofread, `make check screenshot`, commit, merge `blog-post` into `main`
 - [ ] M10 — Publish
@@ -47,6 +48,14 @@ Publish the post on the author's blog with text and illustrations that agree, so
 - [x] R15 (issue 5) — Closing: soften "only holds up" and "have to be treated" to match phases 4–5.
 - [x] R16 — Line edits: "few have tried it yet"; "an AI agent" once in phase 2.
 
+### M6c — round-3 review items (issue numbers refer to the round-3 ASSESSMENT.md)
+
+- [x] R17 (issue 1) — Phase 3: move "The application code itself hasn't changed yet…" before the tests paragraph.
+- [x] R18 (issue 2) — Phase 3: tests "whether they're new or already there"; what's new is the agent running them.
+- [x] R19 (issue 3) — Phase 5: split the two-colon opening sentence.
+- [x] R20 — Phase 4 alt text: "“code quality measured” (replacing “no quality measurement”)".
+- [ ] R21 (issues 4–5, optional) — Trim phase 3's last orchestration sentence; widen the phase 4 intro with "and measuring whether it holds". Author's call.
+
 ## Decisions
 
 - 2026-10-30 — Markdown and a standalone HTML preview, both in the repo. HTML is hand-maintained for now.
@@ -64,7 +73,7 @@ Publish the post on the author's blog with text and illustrations that agree, so
 
 ## Current state / handoff
 
-M6, M6b and M7 are done: both review rounds are applied in `blog-post.md`, the HTML is generated from it, and `make check` passes. The post is ready to publish apart from the publishing steps. Next: M8–M10 (WebP, final proofread and merge, publish), which depend on where the post is published — see Open questions.
+M6, M6b, M6c and M7 are done: all three review rounds are applied (R21 optional, open) in `blog-post.md`, the HTML is generated from it, and `make check` passes. The post is ready to publish apart from the publishing steps. Next: M8–M10 (WebP, final proofread and merge, publish), which depend on where the post is published — see Open questions.
 
 ## Open questions
 
