@@ -2,7 +2,7 @@
 
 ## Goal
 
-Publish the post on the author's blog with text and illustrations that agree, so a reader understands what changes in each phase and leaves with one concrete next step (pointing their agent at ai.memention.net/setup).
+Publish the post (GitHub Pages) with text and illustrations that agree, so a reader understands what changes in each phase and leaves with one concrete next step (pointing their agent at ai.memention.net/setup).
 
 ## Non-goals
 
@@ -23,8 +23,8 @@ Publish the post on the author's blog with text and illustrations that agree, so
 - [x] M6b — Apply the round-2 review (items below)
 - [x] M6c — Apply the round-3 review (items below)
 - [ ] M8 — Optimise images (WebP, ~200 KB each instead of ~1.5 MB)
-- [ ] M9 — Final proofread, `make check screenshot`, commit, merge `blog-post` into `main`
-- [ ] M10 — Publish
+- [x] M9 — Final proofread, `make check screenshot`, commit, merge `blog-post` into `main`
+- [x] M10 — Publish: GitHub Pages at https://epatel.github.io/ai-phases/ (2026-11-07)
 
 ### M6 — review items (numbers refer to ASSESSMENT.md)
 
@@ -70,13 +70,13 @@ Publish the post on the author's blog with text and illustrations that agree, so
 - 2026-10-31 — Phases 4 and 5 are written as recommendations ("I'd…", "would"), not facts; the setup page is presented as the author's own example and a starting point, not the answer.
 - 2026-11-07 — Phase 3 also argues that in-repo context is what makes agent orchestration work: parallel agents in separate git worktrees all start from the same docs.
 - 2026-11-07 — Tests split across phases: unit and function tests belong to phase 3, code-quality measurement to phase 4, and phase 5 starts once that setup has been validated. Kept five phases rather than adding a separate testing phase. Phase 3 and 4 illustrations updated to match by editing the current images (~840 credits); phase 5 kept, since its gate already reads "tests, hooks, review".
+- 2026-11-07 — Published on GitHub Pages from `main` of the public repo `epatel/ai-phases`; a workflow runs `make site` and deploys only the page and the five illustrations. Post date set to 2026-11-07.
 
 ## Current state / handoff
 
-M6, M6b, M6c and M7 are done: all three review rounds are applied (R21 optional, open) in `blog-post.md`, the HTML is generated from it, and `make check` passes. The post is ready to publish apart from the publishing steps. Next: M8–M10 (WebP, final proofread and merge, publish), which depend on where the post is published — see Open questions.
+M6, M6b, M6c and M7 are done: all three review rounds are applied (R21 optional, open) in `blog-post.md`, the HTML is generated from it, and `make check` passes. The post is live at https://epatel.github.io/ai-phases/; pushing to `main` redeploys it. Next: M8 (WebP, ~7.6 MB of PNGs today) and optional R21.
 
 ## Open questions
 
-- Where will the post be published, and in what format (markdown with frontmatter, HTML, a CMS)? This decides M7 and M8.
 - Keep the comic heading font (Bangers) on the HTML page, or switch to something calmer to match the concept-2 illustrations?
 - Keep the title and subtitle drawn inside each illustration (good for sharing single images), or crop them out for the post?

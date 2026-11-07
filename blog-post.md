@@ -1,6 +1,6 @@
 ---
 title: "The Five Phases of AI Adoption in a Project"
-date: 2026-10-30
+date: 2026-11-07
 author: Edward Patel
 description: "From typing every line to stakeholder-driven features: five phases a project goes through as AI agents move in."
 kicker: Five phases, one repository

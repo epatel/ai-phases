@@ -2,7 +2,7 @@
 
 ## About this project
 
-A blog post by Edward Patel describing five phases a software project goes through as AI agents move in. `blog-post.md` is the source text; `blog-post.html` is a standalone preview page generated from it; each phase has an illustration in `images/concept-2/`, generated with ElevenLabs from SVG "meaning" diagrams. There is no app to build: the work is writing, diagrams, illustrations and checks.
+A blog post by Edward Patel describing five phases a software project goes through as AI agents move in. `blog-post.md` is the source text; `blog-post.html` is a standalone preview page generated from it; each phase has an illustration in `images/concept-2/`, generated with ElevenLabs from SVG "meaning" diagrams. The post is published at https://epatel.github.io/ai-phases/ by GitHub Pages from `main` (repo `epatel/ai-phases`, public). There is no app to build: the work is writing, diagrams, illustrations and checks.
 
 Always read @project-plan.md before starting — it holds the goal, the open review items and the current state.
 
@@ -10,6 +10,7 @@ Always read @project-plan.md before starting — it holds the goal, the open rev
 
 - `make` — list targets
 - `make html` — build `blog-post.html` from `blog-post.md` and `scripts/template.html`
+- `make site` — assemble the GitHub Pages site in `_site/` (`index.html` + the five illustrations); CI runs this on every push to `main`
 - `make diagrams` — regenerate the SVG diagrams from `images/concept-2/diagrams/make_concept.py`
 - `make previews` — render the diagrams to `build/previews/` to look at them
 - `make refs` — render the diagrams at 1.6× to `build/refs/` for upload to ElevenLabs

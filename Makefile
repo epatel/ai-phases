@@ -1,23 +1,32 @@
 DIAGRAMS := images/concept-2/diagrams
 PHASES   := 1 2 3 4 5
 BUILD    := build
+SITE     := _site
 CHROME   ?= /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
 CHECKER  ?= ../ai-setup/site/cards/check-agent-docs.py
 
-.PHONY: help html diagrams previews refs check screenshot open clean
+.PHONY: help html site diagrams previews refs check screenshot open clean
 
 help:
 	@echo "make html        build blog-post.html from blog-post.md (never edit the HTML by hand)"
+	@echo "make site        assemble the GitHub Pages site in $(SITE)/ (index.html + illustrations)"
 	@echo "make diagrams    regenerate the SVG diagrams from make_concept.py"
 	@echo "make previews    render the diagrams to $(BUILD)/previews/"
 	@echo "make refs        render the diagrams at 1.6x to $(BUILD)/refs/ for ElevenLabs"
 	@echo "make check       verify images and local links, then run the agent-docs checker"
 	@echo "make screenshot  desktop and phone screenshots of blog-post.html into $(BUILD)/"
 	@echo "make open        open blog-post.html in the browser"
-	@echo "make clean       remove $(BUILD)/"
+	@echo "make clean       remove $(BUILD)/ and $(SITE)/"
 
 html:
 	python3 scripts/build_html.py
+
+# What GitHub Pages serves: the page as index.html plus only the five illustrations.
+site: html
+	rm -rf $(SITE) && mkdir -p $(SITE)/images/concept-2
+	cp blog-post.html $(SITE)/index.html
+	cp images/concept-2/phase-[1-5].png $(SITE)/images/concept-2/
+	touch $(SITE)/.nojekyll
 
 diagrams:
 	python3 $(DIAGRAMS)/make_concept.py $(DIAGRAMS)
@@ -55,4 +64,4 @@ open:
 	open blog-post.html
 
 clean:
-	rm -rf $(BUILD)
+	rm -rf $(BUILD) $(SITE)
