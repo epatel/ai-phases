@@ -1,21 +1,28 @@
 # html-preview
 
-`blog-post.html` is a standalone page that shows how the published post could look. It is hand-maintained next to `blog-post.md`.
+`blog-post.html` is a standalone page showing how the published post could look. It is generated from `blog-post.md` by `scripts/build_html.py` (standard library only) — never edit it by hand.
 
-## Keeping it in sync
+## How the page is built
 
-- Any text change goes into both files in the same edit; markdown `**x**` and `` `x` `` become `<strong>` and `<code>`.
-- Intentional HTML-only parts: the site header (links to `/setup` and `cards/setup-changelog.md`), the kicker above the title, the phase nav pills, the "Try it on your repo" callout in phase 3, the "Set up your project →" button, and the footer credit.
-- Known drift to fix: the phase 3 heading ("AI context is scaffolded…" in HTML vs "AI context engineering is scaffolded…" in markdown); the markdown's "Here they are, with an illustration for each." line has no HTML counterpart.
-- Image `alt` text must match the markdown's image descriptions.
+- `scripts/template.html` holds the `<head>`, all CSS, the site header (links to `/setup` and `cards/setup-changelog.md`) and the footer, with `{{title}}`, `{{description}}`, `{{article}}` and `{{footer}}` placeholders.
+- Frontmatter in the markdown feeds the page: `title`, `date`, `author` (byline), `description` (meta tag), `kicker` (label above the title), `nav` (comma-separated pill labels, one per phase), `credit` (footer).
+- Text before the first `---` becomes the lede under the title.
+- `## Phase N: Title` becomes a numbered section with id `phase-N`; the nav pills link to these.
+- Other `##` sections get a decorative break before them; `## Getting started` becomes the yellow call-to-action box with a "Have a look at the setup page →" button.
+- A blockquote starting with bold text (`> **Try it on your repo** …`) becomes a callout box.
+- Standalone images become `figure.panel` with the PNG's width and height read from the file; every image after the first is lazy-loaded.
+
+## Supported markdown
+
+Paragraphs, `- ` lists, pipe tables, standalone `![alt](src)` images, blockquotes, `---`, `` `code` ``, `**bold**`, `*italic*`, `[links](url)`. Anything else (nested lists, numbered lists, headings below `##`, raw HTML) is not handled — extend the script before using it.
 
 ## Styling
 
 - Colour tokens on `:root`, redefined for dark mode under `prefers-color-scheme: dark` and `[data-theme="dark"]`.
 - Fonts from Google Fonts: Bangers (headings, comic accents), Literata (body), JetBrains Mono (code).
-- `figure.panel img` has a thin rounded border and a soft shadow, suited to the concept-2 illustrations.
+- `figure.panel img` has a thin rounded border and a soft shadow; links inside the yellow call-to-action box are dark for contrast.
 - Layout: 760 px column, 16 px side gutter; works at 390 px phone width.
 
 ## Verify
 
-`make screenshot` writes `build/page-desktop.png` and `build/page-phone.png` (the phone shot renders the page inside a 390 px iframe, because headless Chrome will not shrink its window that far). Look at both.
+`make check` rebuilds the page and checks every image and local link. `make screenshot` writes `build/page-desktop.png` and `build/page-phone.png` (the phone shot renders the page inside a 390 px iframe, because headless Chrome will not shrink its window that far). Look at both.

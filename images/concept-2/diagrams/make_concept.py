@@ -40,6 +40,7 @@ def frame(num, title, idea, body):
   <marker id="ah-doc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="{DOC}"/></marker>
   <marker id="ah-dev" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="{DEV}"/></marker>
   <marker id="ah-stake" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="{STAKE}"/></marker>
+  <marker id="ah-code" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="{CODE}"/></marker>
   <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="{GUARD}" stroke-opacity="0.25" stroke-width="3"/></pattern>
 </defs>
 <rect x="1" y="1" width="{W-2}" height="{H-2}" rx="18" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
@@ -199,7 +200,7 @@ panels[2] = frame(2, "The developer prompts an AI",
 
 # 3 — context moves into the repo
 panels[3] = frame(3, "AI context in the project",
-    "The knowledge moves into the repo. The AI reads it there, every session.",
+    "The knowledge and the tests move into the repo. The AI reads and runs them, every session.",
     person(100, 320, DEV, "Developer")
     + bubble(40, 150, "“Add a login page.”", DEV)
     + f'<path d="M100,180 L100,262" stroke="{LINE}" stroke-width="1.5" stroke-dasharray="3 4"/>'
@@ -211,7 +212,10 @@ panels[3] = frame(3, "AI context in the project",
     + text(468, 400, "reads", 12, DOC, 600, "middle")
     + repo(510, 135, 255, 310)
     + code_grid(535, 172, 4, 1, dx=56)
-    + f'<line x1="525" y1="250" x2="750" y2="250" stroke="#e2e8f0" stroke-width="1.5"/>'
+    + chips_row(535, 222, ["✓ unit + function tests"], CODE, CODE_TINT)
+    + arrow("M410,300 C455,285 470,236 528,234", CODE, "ah-code", 2.5)
+    + text(452, 262, "runs tests", 12, CODE, 600, "middle")
+    + f'<line x1="525" y1="258" x2="750" y2="250" stroke="#e2e8f0" stroke-width="1.5"/>'
     + text(526, 274, "AI context", 12, DOC, 700)
     + chips_row(526, 286, ["CLAUDE.md", "cards/"], DOC, DOC_TINT, mono=True)
     + chips_row(526, 320, ["project-plan.md"], DOC, DOC_TINT, mono=True)
@@ -230,7 +234,7 @@ panels[4] = frame(4, "Architecture chosen for AI",
     + decision(158, 190, "one big shared module", "small features with clear hooks")
     + decision(158, 258, "rules written in docs", "rules enforced by hooks")
     + decision(158, 326, "conventions in people's heads", "explicit contract per feature")
-    + decision(158, 394, "slow, manual testing", "fast tests the AI can run")
+    + decision(158, 394, "no quality measurement", "code quality measured")
     + arrow("M462,290 H492", DEV, "ah-dev", 3)
     # resulting repository inside guardrails
     + f'<rect x="498" y="124" width="282" height="330" rx="16" fill="none" stroke="{GUARD}" stroke-width="2.5" stroke-dasharray="9 6"/>'
@@ -247,7 +251,7 @@ panels[4] = frame(4, "Architecture chosen for AI",
     + mini_ai(668, 346)
     + arrow("M668,328 V318", AI, "ah-ai", 2.5)
     + text(690, 351, "plugs in", 11, AI, 600)
-    + chips_row(528, 372, ["contracts", "fast tests"], CODE, CODE_TINT)
+    + chips_row(528, 372, ["contracts", "fast tests", "quality checks"], CODE, CODE_TINT)
     + chips_row(528, 404, ["CLAUDE.md", "cards/"], DOC, DOC_TINT, mono=True)
 )
 

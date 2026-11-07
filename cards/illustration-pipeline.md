@@ -25,7 +25,11 @@ A phase's meaning changed, a label is wrong, or an illustration needs a fix.
    ```
 
 5. Poll `creative_get_flow_run_status` until `all_completed`. Download `content_url` right away (signed, expires after 2 h) to a scratch folder, look at it, and check every label.
-6. Move the old file to `images/concept-2/first-take/` (or overwrite if it is already archived), copy the new one in, update the alt text in both post files, `make check screenshot`.
+6. Move the old file to `images/concept-2/first-take/` (add a `-vN` suffix if a version is already there), copy the new one in, update the alt text in `blog-post.md`, `make check screenshot`.
+
+## Cheaper route: edit the current illustration
+
+For a small change (a label, one added chip), upload the current `images/concept-2/phase-N.png` as the only reference and prompt "Edit the reference image. Reproduce it EXACTLY … Change ONLY these things: …", listing every label to keep. One reference costs ~420 credits instead of ~655 and keeps the style closest. Used for phases 3 and 4 on 2026-11-07. Still update the SVG diagram so it matches.
 
 ## Fixed IDs
 
@@ -41,5 +45,5 @@ About 185 credits with no reference, 420 with one, 655 with two (2026-10-31 pric
 
 - **Never call generate again to retry** — every call that starts is charged.
 - "Free generations are busy" / daily free-tier limit: nothing is charged; wait or upgrade (the author upgraded on 2026-10-31).
-- The model adds or duplicates elements (phase 4 drew the AI twice) and drifts characters (phase 5 stakeholder gained glasses). Check before swapping in.
+- The model adds or duplicates elements (phase 4 drew the AI twice until the prompt said "EXACTLY ONE robot … do not add a separate AI badge") and drifts characters (phase 5 stakeholder gained glasses). Check before swapping in, and name the element count explicitly in the prompt.
 - Long labels can be misspelled; check each one against the diagram.

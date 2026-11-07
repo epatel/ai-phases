@@ -4,9 +4,10 @@ BUILD    := build
 CHROME   ?= /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
 CHECKER  ?= ../ai-setup/site/cards/check-agent-docs.py
 
-.PHONY: help diagrams previews refs check screenshot open clean
+.PHONY: help html diagrams previews refs check screenshot open clean
 
 help:
+	@echo "make html        build blog-post.html from blog-post.md (never edit the HTML by hand)"
 	@echo "make diagrams    regenerate the SVG diagrams from make_concept.py"
 	@echo "make previews    render the diagrams to $(BUILD)/previews/"
 	@echo "make refs        render the diagrams at 1.6x to $(BUILD)/refs/ for ElevenLabs"
@@ -14,6 +15,9 @@ help:
 	@echo "make screenshot  desktop and phone screenshots of blog-post.html into $(BUILD)/"
 	@echo "make open        open blog-post.html in the browser"
 	@echo "make clean       remove $(BUILD)/"
+
+html:
+	python3 scripts/build_html.py
 
 diagrams:
 	python3 $(DIAGRAMS)/make_concept.py $(DIAGRAMS)
@@ -31,14 +35,14 @@ refs: diagrams
 	done
 
 # The checker comes from the local ai-setup checkout; fall back to the site.
-check:
+check: html
 	python3 scripts/check_post.py
 	@if [ -f "$(CHECKER)" ]; then python3 -I "$(CHECKER)" .; \
 	else mkdir -p $(BUILD) && curl -fsSL https://ai.memention.net/cards/check-agent-docs.py -o $(BUILD)/check-agent-docs.py \
 	  && python3 -I $(BUILD)/check-agent-docs.py .; fi
 
 # Headless Chrome won't shrink below ~500px, so the phone shot renders the page in a 390px iframe.
-screenshot:
+screenshot: html
 	@mkdir -p $(BUILD)
 	@"$(CHROME)" --headless=new --disable-gpu --hide-scrollbars --window-size=1200,2400 \
 	  --screenshot=$(BUILD)/page-desktop.png "file://$(CURDIR)/blog-post.html" 2>/dev/null

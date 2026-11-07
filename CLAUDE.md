@@ -2,17 +2,18 @@
 
 ## About this project
 
-A blog post by Edward Patel describing five phases a software project goes through as AI agents move in. `blog-post.md` is the text; `blog-post.html` is a standalone preview page; each phase has an illustration in `images/concept-2/`, generated with ElevenLabs from SVG "meaning" diagrams. There is no app to build: the work is writing, diagrams, illustrations and checks.
+A blog post by Edward Patel describing five phases a software project goes through as AI agents move in. `blog-post.md` is the source text; `blog-post.html` is a standalone preview page generated from it; each phase has an illustration in `images/concept-2/`, generated with ElevenLabs from SVG "meaning" diagrams. There is no app to build: the work is writing, diagrams, illustrations and checks.
 
 Always read @project-plan.md before starting — it holds the goal, the open review items and the current state.
 
 ## Commands
 
 - `make` — list targets
+- `make html` — build `blog-post.html` from `blog-post.md` and `scripts/template.html`
 - `make diagrams` — regenerate the SVG diagrams from `images/concept-2/diagrams/make_concept.py`
 - `make previews` — render the diagrams to `build/previews/` to look at them
 - `make refs` — render the diagrams at 1.6× to `build/refs/` for upload to ElevenLabs
-- `make check` — verify every image and local link in the post resolves, then run the agent-docs checker
+- `make check` — rebuild the HTML, verify every image and local link resolves, then run the agent-docs checker
 - `make screenshot` — desktop and phone-width screenshots of `blog-post.html` into `build/`
 - `make open` — open the HTML preview in the browser
 - `make clean` — remove `build/`
@@ -20,7 +21,7 @@ Always read @project-plan.md before starting — it holds the goal, the open rev
 ## Working rules
 
 - Image generation spends the author's ElevenLabs credits. State the cost and get a go-ahead before generating, and never re-run a generate call to retry — it charges again.
-- `blog-post.md` and `blog-post.html` are both hand-maintained: change the text in both in the same edit.
+- Edit `blog-post.md`, never `blog-post.html` — it is generated. Page styling and chrome live in `scripts/template.html`. Run `make html` (or `make check`) after editing.
 - Look at every generated or rendered image before using it; check each label's spelling.
 
 ## Cards
@@ -34,7 +35,7 @@ Always read @project-plan.md before starting — it holds the goal, the open rev
 
 ### Features
 - [illustration-pipeline](cards/illustration-pipeline.md) — making or regenerating an illustration with ElevenLabs, or editing a diagram
-- [html-preview](cards/html-preview.md) — editing `blog-post.html`, its styling, or syncing it with `blog-post.md`
+- [html-preview](cards/html-preview.md) — changing how the HTML page looks or is built, or adding markdown the generator doesn't handle yet
 
 ### Decisions
 - [concept-2-over-concept-1](cards/concept-2-over-concept-1.md) — questions about the comic version, the old images, or changing the illustration style

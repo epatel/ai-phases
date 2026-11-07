@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Five Phases of AI Adoption in a Project</title>
-<meta name="description" content="From hand-written code to stakeholder-driven features: five phases a project goes through as AI agents move in.">
+<meta name="description" content="From typing every line to stakeholder-driven features: five phases a project goes through as AI agents move in.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -191,6 +191,7 @@
   }
   .cta a.button:hover { background: #3b4fd8; }
   .cta code { background: rgba(0,0,0,0.08); }
+  .cta a:not(.button) { color: #1d1b18; text-decoration-thickness: 2px; }
 
   footer {
     max-width: 760px; margin: 0 auto; padding: 24px 16px 48px;
@@ -214,109 +215,114 @@
 </div>
 
 <article>
-  <header class="hero">
-    <span class="kicker">Five phases, one repository</span>
-    <h1>The Five Phases of AI Adoption in a Project</h1>
-    <p class="byline">Edward Patel · October 30, 2026</p>
-    <p class="lede">Most teams don't decide to "adopt AI" in one go. It happens gradually, and the project itself changes along the way. I think of it as five phases. Each one changes who touches the code, what touches it, and what the developer spends their day on.</p>
-    <p class="lede">From what I see, most teams are in phase 2 today. Some have reached phase 3. Phases 4 and 5 I have yet to see in practice; few dare to go there yet. So read the first three as a map of where teams are now, and the last two as where I think this is heading.</p>
-    <ul class="phase-nav">
-      <li><a href="#phase-1">1 · Nothing added</a></li>
-      <li><a href="#phase-2">2 · Prompts</a></li>
-      <li><a href="#phase-3">3 · Context</a></li>
-      <li><a href="#phase-4">4 · Architecture</a></li>
-      <li><a href="#phase-5">5 · Stakeholders</a></li>
-    </ul>
-  </header>
+<header class="hero">
+<span class="kicker">Five phases, one repository</span>
+<h1>The Five Phases of AI Adoption in a Project</h1>
+<p class="byline">Edward Patel · October 30, 2026</p>
+<p class="lede">Most teams don't decide to "adopt AI" in one go. It happens gradually, and the project itself changes along the way. I think of it as five phases. Each one changes what the AI knows, how the code is shaped, who drives the changes, and what the developer spends their day on.</p>
+<p class="lede">From what I see, most teams are in phase 2 today. Some have reached phase 3. Phases 4 and 5 I have yet to see in practice; few have tried it yet. So read the first three as a map of where teams are now, and the last two as where I think this is heading.</p>
+<ul class="phase-nav">
+  <li><a href="#phase-1">1 · Nothing added</a></li>
+  <li><a href="#phase-2">2 · Prompts</a></li>
+  <li><a href="#phase-3">3 · Context</a></li>
+  <li><a href="#phase-4">4 · Architecture</a></li>
+  <li><a href="#phase-5">5 · Stakeholders</a></li>
+</ul>
+</header>
 
-  <section class="phase" id="phase-1">
-    <h2><span class="num">1</span>Nothing added</h2>
-    <figure class="panel"><img src="images/concept-2/phase-1.png" width="1280" height="720" alt="The developer types every line at a keyboard; an arrow labelled “types code” leads into a repository that holds only code files."></figure>
-    <p>This is where every project starts. The developer types every line of code themselves. Maybe there's autocomplete in the editor, but nothing in the project knows or cares that AI exists. The repository holds source code and nothing else.</p>
-    <p>There's nothing wrong with this phase. It's just the baseline.</p>
-  </section>
+<section class="phase" id="phase-1">
+<h2><span class="num">1</span>Nothing added</h2>
+<figure class="panel"><img src="images/concept-2/phase-1.png" width="1280" height="720" alt="The developer types every line at a keyboard; an arrow labelled “types code” leads into a repository that holds only code files."></figure>
+<p>This is where every project starts. The developer types every line of code themselves. Maybe there's autocomplete in the editor, but nothing in the project knows or cares that AI exists. The repository holds source code and nothing else.</p>
+<p>There's nothing wrong with this phase. It's just the baseline.</p>
+</section>
 
-  <section class="phase" id="phase-2">
-    <h2><span class="num">2</span>The developer writes prompts that edit the project</h2>
-    <figure class="panel"><img src="images/concept-2/phase-2.png" width="1280" height="720" loading="lazy" alt="A thought cloud “in the developer's head” holds React, tests in /spec and don't touch /legacy. The developer sends “prompt + all of that, again every session” to an AI that starts empty each session."></figure>
-    <p>Now an AI sits between the developer's hands and the code. The developer describes a change, the agent makes it, and the developer reviews the result.</p>
-    <p>The catch is that <strong>all the context lives in the developer's head</strong> and has to be typed again in every prompt. Each session starts from zero: "We use this framework, tests are run like this, don't touch that folder…" It works, but it doesn't scale, and the quality of the output depends on how well the developer remembers to explain things that day.</p>
-  </section>
+<section class="phase" id="phase-2">
+<h2><span class="num">2</span>The developer prompts an AI</h2>
+<figure class="panel"><img src="images/concept-2/phase-2.png" width="1280" height="720" loading="lazy" alt="A thought cloud “in the developer&#x27;s head” holds React, tests in /spec and don&#x27;t touch /legacy. The developer sends “prompt + all of that, again every session” to an AI that starts empty each session."></figure>
+<p>Now an AI agent sits between the developer and the code. The developer describes a change, the agent makes it, and the developer reviews the result.</p>
+<p>The catch is that <strong>all the context lives in the developer's head</strong> and has to be typed again in every prompt. Each session starts from zero: "We use this framework, tests are run like this, don't touch that folder…" It works, but it doesn't scale, and the quality of the output depends on how well the developer remembers to explain things that day.</p>
+</section>
 
-  <section class="phase" id="phase-3">
-    <h2><span class="num">3</span>AI context is scaffolded into the project</h2>
-    <figure class="panel"><img src="images/concept-2/phase-3.png" width="1280" height="720" loading="lazy" alt="The developer gives a short prompt, “Add a login page.” The AI reads the AI context stored inside the repository (CLAUDE.md, cards/, project-plan.md and the project facts) and then edits the code."></figure>
-    <p>The obvious fix for phase 2 is to write the context down <em>in the project</em>. The repository now holds a small set of documents written for the agent, not for humans: what the project is, how to build and test it, conventions, and the things that are easy to get wrong.</p>
-    <p>In practice this means files like:</p>
-    <ul>
-      <li><strong><code>CLAUDE.md</code> / <code>AGENTS.md</code></strong>: the project overview, the commands, and an index of where to find more.</li>
-      <li><strong><a href="https://ai.memention.net/cards/cards-instructions.md">Context cards</a></strong> (<code>cards/</code>): small, lazy-loaded notes the agent reads only when the situation calls for them, so the main file stays short.</li>
-      <li><strong><a href="https://ai.memention.net/cards/project-plan.md"><code>project-plan.md</code></a></strong>: one shared file with the goal, non-goals, milestones, decisions and current state, which every agent session reads and updates.</li>
-      <li><strong><a href="https://ai.memention.net/cards/standing-defaults.md">Standing defaults</a></strong>: decisions made once (e.g. "always use a Python venv") so they aren't debated again in every session.</li>
-    </ul>
-    <p>The code hasn't changed yet. What changed is that the agent now starts every session already knowing the project. Prompts get shorter, and the results get more consistent.</p>
-    <div class="callout">
-      <strong>Try it on your repo</strong>
-      <p>The <a href="https://ai.memention.net/setup">setup page</a> has a read-only checker, <code>check-agent-docs.py</code>, that flags broken <code>@</code> imports, dead or missing card index entries, and files that have grown too large. It changes nothing.</p>
-    </div>
-  </section>
+<section class="phase" id="phase-3">
+<h2><span class="num">3</span>AI context in the project</h2>
+<figure class="panel"><img src="images/concept-2/phase-3.png" width="1280" height="720" loading="lazy" alt="The developer gives a short prompt, “Add a login page.” The AI reads the AI context stored inside the repository (CLAUDE.md, cards/, project-plan.md and the project facts), edits the code, and runs the unit and function tests that now live in the repository too."></figure>
+<p>The natural fix for phase 2 is to write the context down <em>in the project</em>. The repository now holds a small set of documents written for the agent, not for humans: what the project is, how to build and test it, conventions, and the things that are easy to get wrong.</p>
+<p>In my own projects that means files like these (one way to do it):</p>
+<ul>
+  <li><strong><code>CLAUDE.md</code> / <code>AGENTS.md</code></strong>: the project overview, the commands, and an index of where to find more.</li>
+  <li><strong><a href="https://ai.memention.net/cards/cards-instructions.md">Context cards</a></strong> (<code>cards/</code>): small, lazy-loaded notes the agent reads only when the situation calls for them, so the main file stays short.</li>
+  <li><strong><a href="https://ai.memention.net/cards/project-plan.md"><code>project-plan.md</code></a></strong>: one shared file with the goal, non-goals, milestones, decisions and current state, which every agent session reads and updates.</li>
+  <li><strong><a href="https://ai.memention.net/cards/standing-defaults.md">Standing defaults</a></strong>: decisions made once (e.g. "always use a Python venv") so they aren't debated again in every session.</li>
+  <li><strong>Project-scoped <a href="https://github.com/epatel/agent-skills/">skills</a></strong> (<code>.claude/skills/</code>): repeatable workflows such as refactoring or reviews, checked into the repo so every agent and collaborator gets them.</li>
+</ul>
+<p>The names are Claude Code's; other agents use <code>AGENTS.md</code> and similar files.</p>
+<p>Tests belong in this phase too. Unit and function tests, with the commands to run them written in the context docs, let the agent check that its change works before you look at it. Context tells the agent what to do; tests tell it whether it did.</p>
+<p>The application code itself hasn't changed yet. What changed is that the agent now starts every session already knowing the project. Prompts get shorter, and the results get more consistent.</p>
+<p>This matters even more once you run more than one agent. If you orchestrate several agents in parallel, each in its own git worktree, none of them can borrow the context from your head. What's written in the repository comes along with every checkout, so each agent starts from the same conventions, commands and plan, and the decisions one agent records reach the others when its branch is merged. In phase 2, every extra agent means another long prompt; in phase 3, it's a short one.</p>
+<div class="callout">
+<strong>Try it on your repo</strong>
+<p>If you want a quick look at your own agent docs, my <a href="https://ai.memention.net/setup">setup page</a> includes a small read-only script, <code>check-agent-docs.py</code>. It flags broken <code>@</code> imports, dead or missing card index entries, and files that have grown too large, and it changes nothing.</p>
+</div>
+</section>
 
-  <section class="phase" id="phase-4">
-    <h2><span class="num">4</span>The project is architected for agentic tools</h2>
-    <figure class="panel"><img src="images/concept-2/phase-4.png" width="1280" height="720" loading="lazy" alt="The developer works through a board of architecture decisions, crossing out options like “one big shared module” in favour of “small features with clear hooks”, “rules enforced by hooks”, “explicit contract per feature” and “fast tests the AI can run”. The resulting repository has features with open hook slots, sits inside enforced rules, and the AI plugs a new step into one slot."></figure>
-    <p>From here on, we're looking ahead. I haven't seen a team fully here yet, but the pieces exist today. In phase 3 the documentation adapted to the agent. In phase 4 <strong>the developer starts choosing the architecture for it</strong>. Whenever there's a design decision to make, the option that suits how an AI works wins, even if it's not the one you'd have picked for a human-only team.</p>
-    <p>Each of these is a deliberate trade, made because it lets an agent read and change the code safely:</p>
-    <ul>
-      <li><strong><a href="https://ai.memention.net/cards/feature-first-structured.md">Feature-first architecture</a></strong>: features are documented as pipelines of named steps with clear hook points, so an agent can add behaviour without having to understand the whole system.</li>
-      <li><strong>Per-feature <code>CLAUDE.md</code> files</strong>, <a href="https://ai.memention.net/cards/two-tier-claude-md.md">split into a short overview and a full contract</a> (<code>CLAUDE_full.md</code>) once they grow too long.</li>
-      <li><strong><a href="https://ai.memention.net/cards/hooks-over-prose.md">Hooks over prose</a></strong>: mechanical "always/never" rules move out of the documentation and into <code>.claude/settings.json</code> permissions and hooks. The harness enforces them, so the agent doesn't have to remember them.</li>
-      <li><strong>Project-scoped <a href="https://github.com/epatel/agent-skills/">skills</a></strong> in <code>.claude/skills/</code>: repeatable workflows (refactoring, reviews, releases) checked into the repo, so every collaborator and worktree gets them.</li>
-      <li><strong>Fast tests the AI can run</strong>: a quick, reliable test suite is how an agent checks its own work before you ever look at it.</li>
-    </ul>
-    <p>The guiding idea is that a well-structured project gives an agent less room to make mistakes. Clear boundaries, enforced rules and documented extension points help human developers too.</p>
-  </section>
+<section class="phase" id="phase-4">
+<h2><span class="num">4</span>Architecture chosen for AI</h2>
+<figure class="panel"><img src="images/concept-2/phase-4.png" width="1280" height="720" loading="lazy" alt="The developer works through a board of architecture decisions, crossing out options like “one big shared module” in favour of “small features with clear hooks”, “rules enforced by hooks”, “explicit contract per feature” and, instead of “no quality measurement”, “code quality measured”. The resulting repository has features with open hook slots, contracts, fast tests and quality checks, and sits inside enforced rules; the AI plugs a new step into one slot."></figure>
+<p>From here on I'm looking ahead, so read this as suggestions rather than a report; the pieces exist today. In phase 3 the documentation adapted to the agent. In phase 4 I'd expect <strong>the developer to start choosing the architecture for it</strong>. Most of these choices are good for human developers too; the difference is that how an AI works becomes the tie-breaker whenever there's a design decision to make.</p>
+<p>The trades I'd try first:</p>
+<ul>
+  <li><strong>Prefer small features with clear hooks</strong> over one big shared module. If each <a href="https://ai.memention.net/cards/feature-first-structured.md">feature is a pipeline</a> of named steps with hook points, an agent can add behaviour without understanding the whole system.</li>
+  <li><strong>Enforce rules with hooks</strong> rather than writing them in docs. Mechanical "always/never" rules can <a href="https://ai.memention.net/cards/hooks-over-prose.md">move out of the prose</a> and into <code>.claude/settings.json</code> permissions and hooks. Then the harness enforces them, and the agent doesn't have to remember them.</li>
+  <li><strong>Give each feature an explicit contract</strong> instead of relying on conventions in people's heads. For example, a <code>CLAUDE.md</code> per feature with its steps and hooks, <a href="https://ai.memention.net/cards/two-tier-claude-md.md">split into a short overview and a full contract</a> once it grows.</li>
+  <li><strong>Measure code quality, not just correctness.</strong> The tests from phase 3 say whether a change works; measurements such as complexity, duplication, coverage and dependency rules say whether the structure is holding up. Keep the tests fast enough to run after every change, and turn the quality thresholds into checks the agent sees, so it corrects drift as it goes instead of leaving it for you.</li>
+</ul>
+<p>My bet is that a well-structured project gives an agent less room to make mistakes.</p>
+</section>
 
-  <section class="phase" id="phase-5">
-    <h2><span class="num">5</span>The developer stops adding features</h2>
-    <figure class="panel"><img src="images/concept-2/phase-5.png" width="1280" height="720" loading="lazy" alt="The repository is fenced in on every side. The stakeholder asks “Dark mode, please.” and their AI's change must pass a checks gate (tests, hooks, review) before it reaches the features layer. The developer's AI does upkeep on the foundation of context, guardrails, tests and skills that keeps it safe."></figure>
-    <p>This is the phase that changes the role, and the one that takes the most nerve. It only works once the project is <strong>fully set up and safe</strong>: the context is complete, the rules are enforced by hooks and permissions, and every change passes tests and review on its way in. When a project is guarded that well, <strong>the people who want features can drive them directly</strong>. A stakeholder works with their own AI session against the same project, inside the same guardrails, and features come out the other end. Few projects have earned that level of trust yet.</p>
-    <p>The developer doesn't disappear. They move to the other lane. Their AI now points at the <strong>AI layer and the project's health</strong>:</p>
-    <ul>
-      <li>keeping the context documents and cards accurate as the code changes,</li>
-      <li>tightening hooks and permissions when an agent does something it shouldn't,</li>
-      <li>refactoring where the structure has started to drift,</li>
-      <li>improving the tests and checks that let stakeholder-driven changes land safely,</li>
-      <li>reviewing and auditing the agentic setup itself.</li>
-    </ul>
-    <p>In short, the developer stops being the bottleneck for features and becomes the steward of the system that produces them.</p>
-  </section>
+<section class="phase" id="phase-5">
+<h2><span class="num">5</span>Safe enough for stakeholders to drive</h2>
+<figure class="panel"><img src="images/concept-2/phase-5.png" width="1280" height="720" loading="lazy" alt="The repository is fenced in on every side. The stakeholder asks “Dark mode, please.” and their AI&#x27;s change must pass a checks gate (tests, hooks, review) before it reaches the features layer. The developer&#x27;s AI does upkeep on the foundation of context, guardrails, tests and skills that keeps it safe."></figure>
+<p>This is the phase where the developer would stop adding features, and the one that takes the most nerve. It's the furthest out, so this is my guess at what it takes: it only works once the project is <strong>fully set up and safe</strong>, and you've seen that setup hold: the context is complete, the rules are enforced by hooks and permissions, and every change passes the tests and quality checks from the earlier phases on its way in. If a project is guarded that well, <strong>the people who want features could drive them directly</strong>. A stakeholder would work with their own AI session against the same project, inside the same guardrails, and features would come out the other end.</p>
+<p>Review is the part I'd expect to have to scale. If the developer read every stakeholder change, they would simply become the bottleneck again, one pull request at a time. What I'd try is a second AI that reviews each change against the project's rules, alongside the tests and hooks, with a human stepping in only when the reviewer or a check flags something.</p>
+<p>The developer doesn't disappear in this picture. They move to the other lane, from building features to looking after the system, with their AI pointed at the <strong>AI layer and the project's health</strong>:</p>
+<ul>
+  <li>keeping the context documents and cards accurate as the code changes,</li>
+  <li>tightening hooks, permissions and the reviewer's rules when an agent does something it shouldn't,</li>
+  <li>refactoring where the quality measurements show the structure starting to drift,</li>
+  <li>improving the tests and checks that let stakeholder-driven changes land safely,</li>
+  <li>reviewing and auditing the agentic setup itself.</li>
+</ul>
+<p>In short, the developer stops being the bottleneck for features and becomes the steward of the system that produces them.</p>
+</section>
 
-  <hr class="break">
+<hr class="break">
 
-  <section class="phase" id="where">
-    <h2>Where is your project?</h2>
-    <p>A quick way to place a project:</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Phase</th><th>Signal</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>No AI tooling touches the repo</td></tr>
-          <tr><td>2</td><td>You use an agent, but you explain the project again in every prompt</td></tr>
-          <tr><td>3</td><td>There's a <code>CLAUDE.md</code>/<code>AGENTS.md</code> and the agent "knows" the project</td></tr>
-          <tr><td>4</td><td>Architecture decisions are made with the agent in mind</td></tr>
-          <tr><td>5</td><td>The project is safe enough that non-developers ship features; developers mostly work on its health</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p>You don't have to rush through them, and different parts of a codebase can be in different phases. If you're in phase 2, you're in good company: that's where most teams are. Phase 3 is the step almost any team can take today, and each step makes the next one possible. Phase 5 doesn't work without the context of phase 3 and the guardrails of phase 4.</p>
-  </section>
+<section class="phase" id="where-is-your-project">
+<h2>Where is your project?</h2>
+<p>A quick way to place a project:</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Phase</th><th>Signal</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>No AI tooling touches the repo</td></tr>
+<tr><td>2</td><td>You use an agent, but you explain the project again in every prompt</td></tr>
+<tr><td>3</td><td>There's a <code>CLAUDE.md</code>/<code>AGENTS.md</code>, the agent "knows" the project and runs the tests itself</td></tr>
+<tr><td>4</td><td>Architecture decisions are made with the agent in mind, and code quality is measured</td></tr>
+<tr><td>5</td><td>The project is safe enough that non-developers could ship features; developers mostly work on its health</td></tr>
+</tbody>
+</table>
+</div>
+<p>You don't have to rush, and different parts of a codebase can sit at different stages. If you're in phase 2, you're in good company: that's where most teams are. Writing your context down is a step almost any team can take today, and each step makes the next one possible. I'd expect stakeholder-driven work to hold up only on top of the context and guardrails that come before it.</p>
+<p>None of this is free. Each step costs setup time and ongoing upkeep: context goes stale, hooks need tuning, and agents spend tokens reading it all. The last phase also widens who can trigger changes, so the guardrails would have to be treated like security controls, not conventions. That's a good reason to take the phases one at a time.</p>
+</section>
 
-  <aside class="cta">
-    <h2>Getting started</h2>
-    <p>If you want to move a project from phase 2 to phase 3 or 4, I've collected the patterns, files and skills I use on the setup page. It covers context cards, the shared project plan, standing defaults, feature-first documentation, hooks over prose, project-scoped skills, and a read-only checker you can run against your repo to see where it stands.</p>
-    <p>The page is written for your agent, not for you. Open your coding agent in the project and tell it: <code>Follow https://ai.memention.net/setup</code>. It assesses the repo, recommends which patterns fit, and asks before applying anything. Run it again later to pick up what's new.</p>
-    <a class="button" href="https://ai.memention.net/setup">Set up your project →</a>
-  </aside>
+<aside class="cta">
+<h2>Getting started</h2>
+<p>If you want somewhere to start, I've collected the patterns, files and skills I use myself at <strong><a href="https://ai.memention.net/setup">ai.memention.net/setup</a></strong>. It's one way to do it, not the way: treat it as an example or a starting point, take what fits your project and change the rest. It covers context cards, the shared project plan, standing defaults, feature-first documentation, hooks over prose and project-scoped skills.</p>
+<p>The page is written for your agent, not for you. If you'd like to try it, open your coding agent in the project and tell it: <code>Follow https://ai.memention.net/setup</code>. It looks at the repo, suggests which patterns might fit, and asks before applying anything. You can run it again later to pick up changes.</p>
+<a class="button" href="https://ai.memention.net/setup">Have a look at the setup page →</a>
+</aside>
 </article>
 
 <footer>
