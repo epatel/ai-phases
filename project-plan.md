@@ -22,7 +22,7 @@ Publish the post (GitHub Pages) with text and illustrations that agree, so a rea
 - [x] M7 — Single source: `blog-post.html` is generated from `blog-post.md` (`make html`, `scripts/build_html.py`)
 - [x] M6b — Apply the round-2 review (items below)
 - [x] M6c — Apply the round-3 review (items below)
-- [ ] M8 — Optimise images (WebP, ~200 KB each instead of ~1.5 MB)
+- [x] M8 — Optimise images: JPG (quality 82, ~110 KB each) instead of ~1.5 MB PNGs; PNGs kept as masters
 - [x] M9 — Final proofread, `make check screenshot`, commit, merge `blog-post` into `main`
 - [x] M10 — Publish: GitHub Pages at https://epatel.github.io/ai-phases/ (2026-11-07)
 
@@ -72,9 +72,11 @@ Publish the post (GitHub Pages) with text and illustrations that agree, so a rea
 - 2026-11-07 — Tests split across phases: unit and function tests belong to phase 3, code-quality measurement to phase 4, and phase 5 starts once that setup has been validated. Kept five phases rather than adding a separate testing phase. Phase 3 and 4 illustrations updated to match by editing the current images (~840 credits); phase 5 kept, since its gate already reads "tests, hooks, review".
 - 2026-11-07 — Published on GitHub Pages from `main` of the public repo `epatel/ai-phases`; a workflow runs `make site` and deploys only the page and the five illustrations. Post date set to 2026-11-07.
 
+- 2026-11-07 — The post uses JPGs (author's choice over WebP), made by `make jpg` from the PNG masters, which stay in the repo for edits and uploads.
+
 ## Current state / handoff
 
-M6, M6b, M6c and M7 are done: all three review rounds are applied (R21 optional, open) in `blog-post.md`, the HTML is generated from it, and `make check` passes. The post is live at https://epatel.github.io/ai-phases/; pushing to `main` redeploys it. Next: M8 (WebP, ~7.6 MB of PNGs today) and optional R21.
+M6, M6b, M6c and M7 are done: all three review rounds are applied (R21 optional, open) in `blog-post.md`, the HTML is generated from it, and `make check` passes. The post is live at https://epatel.github.io/ai-phases/; pushing to `main` redeploys it. M8 done: the page now loads ~560 KB of JPGs instead of ~7.6 MB of PNGs. Next: optional R21.
 
 ## Open questions
 

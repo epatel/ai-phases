@@ -45,10 +45,20 @@ def inline(text):
     return re.sub(r"\x00(\d+)\x00", lambda m: codes[int(m.group(1))], text)
 
 
-def png_size(path):
-    with open(path, "rb") as fh:
-        head = fh.read(24)
-    return struct.unpack(">II", head[16:24]) if head[:8] == b"\x89PNG\r\n\x1a\n" else (None, None)
+def image_size(path):
+    """(width, height) of a PNG or baseline/progressive JPEG, else (None, None)."""
+    data = Path(path).read_bytes()
+    if data[:8] == b"\x89PNG\r\n\x1a\n":
+        return struct.unpack(">II", data[16:24])
+    if data[:2] == b"\xff\xd8":
+        i = 2
+        while i + 9 < len(data):
+            marker, length = data[i + 1], struct.unpack(">H", data[i + 2:i + 4])[0]
+            if marker in (0xC0, 0xC1, 0xC2):
+                h, w = struct.unpack(">HH", data[i + 5:i + 9])
+                return w, h
+            i += 2 + length
+    return None, None
 
 
 def frontmatter(text):
@@ -120,7 +130,7 @@ def render(kind, lines, first_image):
     if kind == "image":
         m = re.match(r"!\[([^\]]*)\]\(([^)\s]+)\)", lines[0])
         alt, src = m.group(1), m.group(2)
-        w, h = png_size(SRC.parent / src) if src.endswith(".png") else (None, None)
+        w, h = image_size(SRC.parent / src)
         size = f' width="{w}" height="{h}"' if w else ""
         lazy = "" if first_image else ' loading="lazy"'
         return f'<figure class="panel"><img src="{src}"{size}{lazy} alt="{html.escape(alt)}"></figure>'

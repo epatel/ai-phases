@@ -232,21 +232,21 @@
 
 <section class="phase" id="phase-1">
 <h2><span class="num">1</span>Nothing added</h2>
-<figure class="panel"><img src="images/concept-2/phase-1.png" width="1280" height="720" alt="The developer types every line at a keyboard; an arrow labelled “types code” leads into a repository that holds only code files."></figure>
+<figure class="panel"><img src="images/concept-2/phase-1.jpg" width="1280" height="720" alt="The developer types every line at a keyboard; an arrow labelled “types code” leads into a repository that holds only code files."></figure>
 <p>This is where every project starts. The developer types every line of code themselves. Maybe there's autocomplete in the editor, but nothing in the project knows or cares that AI exists. The repository holds source code and nothing else.</p>
 <p>There's nothing wrong with this phase. It's just the baseline.</p>
 </section>
 
 <section class="phase" id="phase-2">
 <h2><span class="num">2</span>The developer prompts an AI</h2>
-<figure class="panel"><img src="images/concept-2/phase-2.png" width="1280" height="720" loading="lazy" alt="A thought cloud “in the developer&#x27;s head” holds React, tests in /spec and don&#x27;t touch /legacy. The developer sends “prompt + all of that, again every session” to an AI that starts empty each session."></figure>
+<figure class="panel"><img src="images/concept-2/phase-2.jpg" width="1280" height="720" loading="lazy" alt="A thought cloud “in the developer&#x27;s head” holds React, tests in /spec and don&#x27;t touch /legacy. The developer sends “prompt + all of that, again every session” to an AI that starts empty each session."></figure>
 <p>Now an AI agent sits between the developer and the code. The developer describes a change, the agent makes it, and the developer reviews the result.</p>
 <p>The catch is that <strong>all the context lives in the developer's head</strong> and has to be typed again in every prompt. Each session starts from zero: "We use this framework, tests are run like this, don't touch that folder…" It works, but it doesn't scale, and the quality of the output depends on how well the developer remembers to explain things that day.</p>
 </section>
 
 <section class="phase" id="phase-3">
 <h2><span class="num">3</span>AI context in the project</h2>
-<figure class="panel"><img src="images/concept-2/phase-3.png" width="1280" height="720" loading="lazy" alt="The developer gives a short prompt, “Add a login page.” The AI reads the AI context stored inside the repository (CLAUDE.md, cards/, project-plan.md and the project facts), edits the code, and runs the unit and function tests that now live in the repository too."></figure>
+<figure class="panel"><img src="images/concept-2/phase-3.jpg" width="1280" height="720" loading="lazy" alt="The developer gives a short prompt, “Add a login page.” The AI reads the AI context stored inside the repository (CLAUDE.md, cards/, project-plan.md and the project facts), edits the code, and runs the unit and function tests that now live in the repository too."></figure>
 <p>The natural fix for phase 2 is to write the context down <em>in the project</em>. The repository now holds a small set of documents written for the agent, not for humans: what the project is, how to build and test it, conventions, and the things that are easy to get wrong.</p>
 <p>In my own projects that means files like these (one way to do it):</p>
 <ul>
@@ -268,7 +268,7 @@
 
 <section class="phase" id="phase-4">
 <h2><span class="num">4</span>Architecture chosen for AI</h2>
-<figure class="panel"><img src="images/concept-2/phase-4.png" width="1280" height="720" loading="lazy" alt="The developer works through a board of architecture decisions, crossing out options like “one big shared module” in favour of “small features with clear hooks”, “rules enforced by hooks”, “explicit contract per feature” and “code quality measured” (replacing “no quality measurement”). The resulting repository has features with open hook slots, contracts, fast tests and quality checks, and sits inside enforced rules; the AI plugs a new step into one slot."></figure>
+<figure class="panel"><img src="images/concept-2/phase-4.jpg" width="1280" height="720" loading="lazy" alt="The developer works through a board of architecture decisions, crossing out options like “one big shared module” in favour of “small features with clear hooks”, “rules enforced by hooks”, “explicit contract per feature” and “code quality measured” (replacing “no quality measurement”). The resulting repository has features with open hook slots, contracts, fast tests and quality checks, and sits inside enforced rules; the AI plugs a new step into one slot."></figure>
 <p>From here on I'm looking ahead, so read this as suggestions rather than a report; the pieces exist today. In phase 3 the documentation adapted to the agent. In phase 4 I'd expect <strong>the developer to start choosing the architecture for it</strong>. Most of these choices are good for human developers too; the difference is that how an AI works becomes the tie-breaker whenever there's a design decision to make.</p>
 <p>The trades I'd try first:</p>
 <ul>
@@ -282,7 +282,7 @@
 
 <section class="phase" id="phase-5">
 <h2><span class="num">5</span>Safe enough for stakeholders to drive</h2>
-<figure class="panel"><img src="images/concept-2/phase-5.png" width="1280" height="720" loading="lazy" alt="The repository is fenced in on every side. The stakeholder asks “Dark mode, please.” and their AI&#x27;s change must pass a checks gate (tests, hooks, review) before it reaches the features layer. The developer&#x27;s AI does upkeep on the foundation of context, guardrails, tests and skills that keeps it safe."></figure>
+<figure class="panel"><img src="images/concept-2/phase-5.jpg" width="1280" height="720" loading="lazy" alt="The repository is fenced in on every side. The stakeholder asks “Dark mode, please.” and their AI&#x27;s change must pass a checks gate (tests, hooks, review) before it reaches the features layer. The developer&#x27;s AI does upkeep on the foundation of context, guardrails, tests and skills that keeps it safe."></figure>
 <p>This is the phase where the developer would stop adding features, and the one that takes the most nerve. It's the furthest out, so this is my guess at what it takes. It only works once the project is <strong>fully set up and safe</strong>, and you've seen that setup hold: the context is complete, the rules are enforced by hooks and permissions, and every change passes the tests and quality checks from the earlier phases on its way in. If a project is guarded that well, <strong>the people who want features could drive them directly</strong>. A stakeholder would work with their own AI session against the same project, inside the same guardrails, and features would come out the other end.</p>
 <p>Review is the part I'd expect to have to scale. If the developer read every stakeholder change, they would simply become the bottleneck again, one pull request at a time. What I'd try is a second AI that reviews each change against the project's rules, alongside the tests and hooks, with a human stepping in only when the reviewer or a check flags something.</p>
 <p>The developer doesn't disappear in this picture. They move to the other lane, from building features to looking after the system, with their AI pointed at the <strong>AI layer and the project's health</strong>:</p>

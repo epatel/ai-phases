@@ -10,7 +10,7 @@
 - `## Phase N: Title` becomes a numbered section with id `phase-N`; the nav pills link to these.
 - Other `##` sections get a decorative break before them; `## Getting started` becomes the yellow call-to-action box with a "Have a look at the setup page →" button.
 - A blockquote starting with bold text (`> **Try it on your repo** …`) becomes a callout box.
-- Standalone images become `figure.panel` with the PNG's width and height read from the file; every image after the first is lazy-loaded.
+- Standalone images become `figure.panel` with the image's width and height read from the file (PNG or JPEG); every image after the first is lazy-loaded.
 
 ## Supported markdown
 

@@ -18,7 +18,7 @@ From what I see, most teams are in phase 2 today. Some have reached phase 3. Pha
 
 ## Phase 1: Nothing added
 
-![The developer types every line at a keyboard; an arrow labelled “types code” leads into a repository that holds only code files.](images/concept-2/phase-1.png)
+![The developer types every line at a keyboard; an arrow labelled “types code” leads into a repository that holds only code files.](images/concept-2/phase-1.jpg)
 
 This is where every project starts. The developer types every line of code themselves. Maybe there's autocomplete in the editor, but nothing in the project knows or cares that AI exists. The repository holds source code and nothing else.
 
@@ -28,7 +28,7 @@ There's nothing wrong with this phase. It's just the baseline.
 
 ## Phase 2: The developer prompts an AI
 
-![A thought cloud “in the developer's head” holds React, tests in /spec and don't touch /legacy. The developer sends “prompt + all of that, again every session” to an AI that starts empty each session.](images/concept-2/phase-2.png)
+![A thought cloud “in the developer's head” holds React, tests in /spec and don't touch /legacy. The developer sends “prompt + all of that, again every session” to an AI that starts empty each session.](images/concept-2/phase-2.jpg)
 
 Now an AI agent sits between the developer and the code. The developer describes a change, the agent makes it, and the developer reviews the result.
 
@@ -38,7 +38,7 @@ The catch is that **all the context lives in the developer's head** and has to b
 
 ## Phase 3: AI context in the project
 
-![The developer gives a short prompt, “Add a login page.” The AI reads the AI context stored inside the repository (CLAUDE.md, cards/, project-plan.md and the project facts), edits the code, and runs the unit and function tests that now live in the repository too.](images/concept-2/phase-3.png)
+![The developer gives a short prompt, “Add a login page.” The AI reads the AI context stored inside the repository (CLAUDE.md, cards/, project-plan.md and the project facts), edits the code, and runs the unit and function tests that now live in the repository too.](images/concept-2/phase-3.jpg)
 
 The natural fix for phase 2 is to write the context down *in the project*. The repository now holds a small set of documents written for the agent, not for humans: what the project is, how to build and test it, conventions, and the things that are easy to get wrong.
 
@@ -64,7 +64,7 @@ This matters even more once you run more than one agent. If you orchestrate seve
 
 ## Phase 4: Architecture chosen for AI
 
-![The developer works through a board of architecture decisions, crossing out options like “one big shared module” in favour of “small features with clear hooks”, “rules enforced by hooks”, “explicit contract per feature” and “code quality measured” (replacing “no quality measurement”). The resulting repository has features with open hook slots, contracts, fast tests and quality checks, and sits inside enforced rules; the AI plugs a new step into one slot.](images/concept-2/phase-4.png)
+![The developer works through a board of architecture decisions, crossing out options like “one big shared module” in favour of “small features with clear hooks”, “rules enforced by hooks”, “explicit contract per feature” and “code quality measured” (replacing “no quality measurement”). The resulting repository has features with open hook slots, contracts, fast tests and quality checks, and sits inside enforced rules; the AI plugs a new step into one slot.](images/concept-2/phase-4.jpg)
 
 From here on I'm looking ahead, so read this as suggestions rather than a report; the pieces exist today. In phase 3 the documentation adapted to the agent. In phase 4 I'd expect **the developer to start choosing the architecture for it**. Most of these choices are good for human developers too; the difference is that how an AI works becomes the tie-breaker whenever there's a design decision to make.
 
@@ -81,7 +81,7 @@ My bet is that a well-structured project gives an agent less room to make mistak
 
 ## Phase 5: Safe enough for stakeholders to drive
 
-![The repository is fenced in on every side. The stakeholder asks “Dark mode, please.” and their AI's change must pass a checks gate (tests, hooks, review) before it reaches the features layer. The developer's AI does upkeep on the foundation of context, guardrails, tests and skills that keeps it safe.](images/concept-2/phase-5.png)
+![The repository is fenced in on every side. The stakeholder asks “Dark mode, please.” and their AI's change must pass a checks gate (tests, hooks, review) before it reaches the features layer. The developer's AI does upkeep on the foundation of context, guardrails, tests and skills that keeps it safe.](images/concept-2/phase-5.jpg)
 
 This is the phase where the developer would stop adding features, and the one that takes the most nerve. It's the furthest out, so this is my guess at what it takes. It only works once the project is **fully set up and safe**, and you've seen that setup hold: the context is complete, the rules are enforced by hooks and permissions, and every change passes the tests and quality checks from the earlier phases on its way in. If a project is guarded that well, **the people who want features could drive them directly**. A stakeholder would work with their own AI session against the same project, inside the same guardrails, and features would come out the other end.
 

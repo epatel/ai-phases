@@ -5,10 +5,11 @@ SITE     := _site
 CHROME   ?= /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
 CHECKER  ?= ../ai-setup/site/cards/check-agent-docs.py
 
-.PHONY: help html site diagrams previews refs check screenshot open clean
+.PHONY: help html jpg site diagrams previews refs check screenshot open clean
 
 help:
 	@echo "make html        build blog-post.html from blog-post.md (never edit the HTML by hand)"
+	@echo "make jpg         make the published JPGs (quality 82) from the PNG masters in images/concept-2/"
 	@echo "make site        assemble the GitHub Pages site in $(SITE)/ (index.html + illustrations)"
 	@echo "make diagrams    regenerate the SVG diagrams from make_concept.py"
 	@echo "make previews    render the diagrams to $(BUILD)/previews/"
@@ -21,11 +22,18 @@ help:
 html:
 	python3 scripts/build_html.py
 
+# The post uses JPGs (~110 KB each); the PNGs stay as the lossless masters.
+jpg:
+	@for n in $(PHASES); do \
+	  magick images/concept-2/phase-$$n.png -strip -interlace JPEG -sampling-factor 4:2:0 -quality 82 images/concept-2/phase-$$n.jpg; \
+	  echo "images/concept-2/phase-$$n.jpg $$(stat -f %z images/concept-2/phase-$$n.jpg) bytes"; \
+	done
+
 # What GitHub Pages serves: the page as index.html plus only the five illustrations.
 site: html
 	rm -rf $(SITE) && mkdir -p $(SITE)/images/concept-2
 	cp blog-post.html $(SITE)/index.html
-	cp images/concept-2/phase-[1-5].png $(SITE)/images/concept-2/
+	cp images/concept-2/phase-[1-5].jpg $(SITE)/images/concept-2/
 	touch $(SITE)/.nojekyll
 
 diagrams:

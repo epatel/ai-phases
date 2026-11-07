@@ -25,7 +25,7 @@ A phase's meaning changed, a label is wrong, or an illustration needs a fix.
    ```
 
 5. Poll `creative_get_flow_run_status` until `all_completed`. Download `content_url` right away (signed, expires after 2 h) to a scratch folder, look at it, and check every label.
-6. Move the old file to `images/concept-2/first-take/` (add a `-vN` suffix if a version is already there), copy the new one in, update the alt text in `blog-post.md`, `make check screenshot`.
+6. Move the old PNG to `images/concept-2/first-take/` (add a `-vN` suffix if a version is already there), copy the new one in, run `make jpg` (the post uses the JPGs), update the alt text in `blog-post.md`, `make check screenshot`.
 
 ## Cheaper route: edit the current illustration
 
